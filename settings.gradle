@@ -6,4 +6,32 @@
  * This project uses @Incubating APIs which are subject to change.
  */
 
+pluginManagement {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        gradlePluginPortal()
+    }
+
+    plugins {
+        id "com.gradle.enterprise" version "3.2.1"
+    }
+}
+plugins {
+    id "com.gradle.enterprise"
+}
 rootProject.name = 'javaLearning'
+
+include 'basics'
+include 'multiThreading'
+
+rootProject.children.each { project ->
+    String projectDirName = "projects/$project.name"
+    project.projectDir = new File(settingsDir, projectDirName)
+    project.buildFileName = 'build.gradle'
+
+// ensure the build fails if the assumned directories 
+// and files do not exist in the respective location
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.isFile()
+}

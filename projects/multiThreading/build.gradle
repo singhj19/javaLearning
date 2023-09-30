@@ -5,32 +5,25 @@
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.3/samples
  * This project uses @Incubating APIs which are subject to change.
  */
-subprojects {
-    apply plugin: 'java'
- 
-    repositories {
-        mavenCentral()
-    }
+
+/* plugins {
+     id 'java'
+ }
+ */
+
+jar {
+     manifest {
+         attributes 'Main-class' : 'com.thread.demo.ThreadDemo'
+     }
+ }
+
+/*
+ repositories {
+     mavenCentral()
+ }
 
  dependencies {
      testImplementation group: 'junit', name: 'junit', version: '4.13.2'
  }
-}
-
-/*
- plugins {
-     id 'java'
- }
-
- jar {
-     manifest {
-         attributes 'Main-class' : 'com.learning.io.InputClass'
-     }
- }
-
- repositories {
-     mavenCentral()
- }
 */
-
 
